@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neo Lite – Premium Learning Community</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #06040f; --card: rgba(255,255,255,0.04); --border: rgba(255,255,255,0.08);
+      --gold: #f0c040; --purple: #9b5de5; --cyan: #00e5ff; --green: #39ff14;
+      --text: #e8e8f0; --muted: #8888aa;
+    }
+    html, body { height: 100%; min-height: 100vh; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(155,93,229,0.18) 0%, transparent 70%), radial-gradient(ellipse 50% 40% at 80% 80%, rgba(0,229,255,0.10) 0%, transparent 60%); pointer-events: none; z-index: 0; }
+    .particles { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+    .particle { position: absolute; border-radius: 50%; animation: float linear infinite; }
+    @keyframes float { 0% { transform: translateY(100vh) scale(0); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 0.5; } 100% { transform: translateY(-10vh) scale(1); opacity: 0; } }
+    .wrapper { position: relative; z-index: 1; width: 100%; max-width: 400px; margin: 0 auto; padding: 14px 16px; display: flex; flex-direction: column; align-items: center; }
+    .logo-wrap { display: flex; justify-content: center; margin-bottom: 8px; }
+    .logo-wrap img { width: 75px; height: 75px; object-fit: contain; filter: drop-shadow(0 0 16px rgba(155,93,229,0.8)) drop-shadow(0 0 6px rgba(240,192,64,0.5)); animation: pulse-logo 3s ease-in-out infinite; }
+    @keyframes pulse-logo { 0%, 100% { filter: drop-shadow(0 0 16px rgba(155,93,229,0.7)) drop-shadow(0 0 6px rgba(240,192,64,0.5)); } 50% { filter: drop-shadow(0 0 28px rgba(155,93,229,1)) drop-shadow(0 0 14px rgba(240,192,64,0.8)); } }
+    .brand-name { font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 800; text-align: center; background: linear-gradient(135deg, #f0c040 0%, #9b5de5 40%, #00e5ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: 1px; margin-bottom: 3px; }
+    .brand-sub { text-align: center; font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+    .live-badge { display: flex; align-items: center; gap: 6px; justify-content: center; margin-bottom: 12px; }
+    .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); animation: blink 1.2s ease-in-out infinite; }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .live-text { font-size: 10px; font-weight: 600; color: var(--green); letter-spacing: 2px; text-transform: uppercase; }
+    .features { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-bottom: 10px; width: 100%; }
+    .feature-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 10px 8px; text-align: center; backdrop-filter: blur(10px); }
+    .feature-icon { font-size: 18px; margin-bottom: 4px; }
+    .feature-label { font-size: 10px; font-weight: 600; color: var(--text); }
+    .stats-strip { display: flex; justify-content: space-around; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 8px 10px; margin-bottom: 10px; width: 100%; }
+    .stat { text-align: center; }
+    .stat-num { font-family: 'Orbitron', sans-serif; font-size: 14px; font-weight: 700; color: var(--gold); }
+    .stat-label { font-size: 9px; color: var(--muted); margin-top: 1px; letter-spacing: 1px; text-transform: uppercase; }
+    .cta-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 13px 20px; border-radius: 50px; border: none; cursor: pointer; font-size: 15px; font-weight: 700; font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #9b5de5 0%, #0070f3 50%, #00e5ff 100%); color: #fff; text-decoration: none; margin-bottom: 10px; animation: pulse-btn 2.5s ease-in-out infinite; transition: transform 0.15s; }
+    .cta-btn:hover { transform: scale(1.03); }
+    @keyframes pulse-btn { 0%, 100% { box-shadow: 0 4px 24px rgba(155,93,229,0.5), 0 0 0 0 rgba(155,93,229,0.3); } 50% { box-shadow: 0 4px 24px rgba(155,93,229,0.5), 0 0 0 8px rgba(155,93,229,0); } }
+    .countdown-wrap { display: flex; align-items: center; gap: 12px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 8px 16px; margin-bottom: 10px; width: 100%; }
+    .ring-container { position: relative; width: 44px; height: 44px; flex-shrink: 0; }
+    .ring-svg { transform: rotate(-90deg); }
+    .ring-bg { fill: none; stroke: rgba(255,255,255,0.06); stroke-width: 4; }
+    .ring-progress { fill: none; stroke: url(#ringGrad); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 113; stroke-dashoffset: 0; transition: stroke-dashoffset 1s linear; }
+    .ring-num { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Orbitron', sans-serif; font-size: 14px; font-weight: 800; color: var(--cyan); text-shadow: 0 0 8px var(--cyan); }
+    .countdown-text { font-size: 11px; color: var(--muted); line-height: 1.5; }
+    .countdown-text strong { color: var(--cyan); font-size: 12px; display: block; }
+    .disclaimer { font-size: 9px; color: var(--muted); text-align: center; line-height: 1.5; margin-bottom: 6px; padding: 0 4px; }
+    .footer-credit { text-align: center; font-size: 9px; color: var(--muted); }
+    .footer-credit a { color: var(--cyan); text-decoration: none; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="particles" id="particles"></div>
+  <div class="wrapper">
+    <div class="logo-wrap">
+      <img src="logo.png" alt="Neo Lite Logo" />
+    </div>
+    <div class="brand-name">NEO LITE</div>
+    <div class="brand-sub">Premium Learning Community</div>
+    <div class="live-badge">
+      <div class="live-dot"></div>
+      <span class="live-text">Active Now</span>
+    </div>
+    <div class="features">
+      <div class="feature-card"><div class="feature-icon">📚</div><div class="feature-label">Expert Content</div></div>
+      <div class="feature-card"><div class="feature-icon">🔐</div><div class="feature-label">Private Access</div></div>
+      <div class="feature-card"><div class="feature-icon">⚡</div><div class="feature-label">Instant Updates</div></div>
+      <div class="feature-card"><div class="feature-icon">💬</div><div class="feature-label">Active Community</div></div>
+    </div>
+    <div class="stats-strip">
+      <div class="stat"><div class="stat-num">5K+</div><div class="stat-label">Members</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Free</div></div>
+      <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Updates</div></div>
+    </div>
+    <a class="cta-btn" href="https://t.me/+QwXaGdEXM_wwYzg1">
+      <span>✈️</span> Join Telegram Channel
+    </a>
+    <div class="countdown-wrap">
+      <div class="ring-container">
+        <svg class="ring-svg" width="44" height="44" viewBox="0 0 44 44">
+          <defs>
+            <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#9b5de5" />
+              <stop offset="100%" stop-color="#00e5ff" />
+            </linearGradient>
+          </defs>
+          <circle class="ring-bg" cx="22" cy="22" r="18" />
+          <circle class="ring-progress" id="ringProgress" cx="22" cy="22" r="18" />
+        </svg>
+        <div class="ring-num" id="countNum">6</div>
+      </div>
+      <div class="countdown-text">
+        <strong>Auto Redirecting to Telegram</strong>
+        Page will open automatically in a few seconds…
+      </div>
+    </div>
+    <div class="disclaimer">This channel is for educational and informational purposes only. Content shared does not constitute professional advice. Please do your own research.</div>
+    <div class="footer-credit">Educational Purpose Only &nbsp;|&nbsp; <a href="https://wa.me/918360000565" target="_blank">📲 Ads Managed by Sukhdeep</a></div>
+  </div>
+  <script>
+    const container = document.getElementById('particles');
+    const colors = ['#9b5de5','#00e5ff','#f0c040','#39ff14'];
+    for (let i = 0; i < 25; i++) {
+      const p = document.createElement('div');
+      p.classList.add('particle');
+      const size = Math.random() * 2.5 + 1;
+      p.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;background:${colors[Math.floor(Math.random()*colors.length)]};opacity:${Math.random()*0.5+0.2};animation-duration:${Math.random()*12+8}s;animation-delay:${Math.random()*10}s;`;
+      container.appendChild(p);
+    }
+    const TOTAL = 6;
+    const circumference = 2 * Math.PI * 18;
+    const ring = document.getElementById('ringProgress');
+    const numEl = document.getElementById('countNum');
+    ring.style.strokeDasharray = circumference;
+    ring.style.strokeDashoffset = 0;
+    let remaining = TOTAL;
+    function tick() {
+      remaining--;
+      numEl.textContent = remaining;
+      ring.style.strokeDashoffset = circumference * (remaining / TOTAL);
+      if (remaining <= 0) { window.location.href = 'https://t.me/+QwXaGdEXM_wwYzg1'; }
+      else { setTimeout(tick, 1000); }
+    }
+    setTimeout(tick, 1000);
+  </script>
+</body>
+</html>
