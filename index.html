@@ -17,7 +17,7 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1458246912727884&ev=PageView&noscript=1"
 /></noscript>
-<!-- End Meta Pixel Code -->  
+<!-- End Meta Pixel Code -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Neo Lite – Premium Learning Community</title>
@@ -90,7 +90,7 @@ src="https://www.facebook.com/tr?id=1458246912727884&ev=PageView&noscript=1"
       <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Free</div></div>
       <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Updates</div></div>
     </div>
-    <a class="cta-btn" href="https://t.me/+QwXaGdEXM_wwYzg1">
+    <a class="cta-btn" href="https://t.me/+QwXaGdEXM_wwYzg1" onclick="fbq('track', 'Lead')">
       <span>✈️</span> Join Telegram Channel
     </a>
     <div class="countdown-wrap">
@@ -136,7 +136,10 @@ src="https://www.facebook.com/tr?id=1458246912727884&ev=PageView&noscript=1"
       remaining--;
       numEl.textContent = remaining;
       ring.style.strokeDashoffset = circumference * (remaining / TOTAL);
-      if (remaining <= 0) { window.location.href = 'https://t.me/+QwXaGdEXM_wwYzg1'; }
+      if (remaining <= 0) {
+        fbq('track', 'Lead');
+        window.location.href = 'https://t.me/+QwXaGdEXM_wwYzg1';
+      }
       else { setTimeout(tick, 1000); }
     }
     setTimeout(tick, 1000);
