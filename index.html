@@ -4,6 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Neo Lite – Premium Learning Community</title>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1644723169963676');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1644723169963676&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -73,7 +90,7 @@
       <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Free</div></div>
       <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Updates</div></div>
     </div>
-    <a class="cta-btn" href="https://t.me/+QwXaGdEXM_wwYzg1">
+    <a class="cta-btn" href="https://t.me/+QwXaGdEXM_wwYzg1" onclick="fbq('track', 'Lead')">
       <span>✈️</span> Join Telegram Channel
     </a>
     <div class="countdown-wrap">
@@ -119,7 +136,10 @@
       remaining--;
       numEl.textContent = remaining;
       ring.style.strokeDashoffset = circumference * (remaining / TOTAL);
-      if (remaining <= 0) { window.location.href = 'https://t.me/+QwXaGdEXM_wwYzg1'; }
+      if (remaining <= 0) {
+        fbq('track', 'Lead');
+        window.location.href = 'https://t.me/+QwXaGdEXM_wwYzg1';
+      }
       else { setTimeout(tick, 1000); }
     }
     setTimeout(tick, 1000);
